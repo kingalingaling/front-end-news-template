@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Front End News Template](https://wondrous-otter-2fd530.netlify.app/)
 
 ## My process
 I built using html and bootstrap, designing and styling the easy aspects simultaneously. After this, I added the remaining aspects of the design bit by bit.
