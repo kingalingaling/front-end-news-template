@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Screenshot of my page](./screenshot.jpg)
+![Screenshot of my page](./screenshot.png)
 
 
 ### Links
