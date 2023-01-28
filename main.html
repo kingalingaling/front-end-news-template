@@ -8,53 +8,63 @@
   
   <title>Frontend Mentor | News Homepage (Without Bootstrap)</title>
 
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
     <header>
-        <span></span>
         <nav>
-            <ul>
-                <li>Home</li>
-                <li>New</li>
-                <li>Popular</li>
-                <li>Trending</li>
-                <li>Categories</li>
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt=""/>
+            </div>
+            <div class="icon">
+                <span class="toggle">☰</span>
+            </div>
+            <ul class="list-item">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">New</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Trending</a></li>
+                <li><a href="#">Categories</a></li>
             </ul>
         </nav>
     </header>
    
     <section>
-        <main>
-            <div>
-                <img src="">
+        <main class="section-main">
+            <div class="fill">
+                <img src="assets/images/image-web-3-desktop.jpg">
             </div>
             <div>
-                <h1>The Bright Future of Web 3.0?</h1>
-                <div>
+                <h1 class="main-h1">The Bright Future of Web 3.0?</h1>
+                <div class="main-div">
                     <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?</p>
                     <button>READ MORE</button>
                 </div>
             </div>
+            
         </main>
         
         <aside>
-            <h1>NEW</h1>
+            <div>
+                <h1>NEW</h1>
 
             <div>
                 <h3>Hydrogen VS Electric Cars</h3>
                 <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+                <hr class="hr-style-1">
             </div>
             
             <div>
                 <h3>The Downsides of AI Artistry</h3>
                 <p>What are the possible adverse effects of on-demand AI image generation?</p>
+                <hr class="hr-style-1">
             </div>
             
             <div>
                 <h3>Is VC Funding Drying Up?</h3>
                 <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+            </div>
+
             </div>
             
         </aside>     
@@ -77,5 +87,8 @@
             <p>How the pandemic has sparked fresh opportunities.</p>
         </div>
     </section>
+
+
+    <script src="scripts/index.js"></script>
 </body>
 </html>
