@@ -12,8 +12,12 @@
     text-decoration: none;
     font-family: inter;
     list-style: none;
-    /*    outline: 1px solid brown;*/
-  }
+    /* outline: 1px solid brown;*/
+}
+
+.body-wrapper {
+    padding: 8%;
+}
 
 :root {
     --soft-orange: hsl(35, 77%, 62%);
@@ -36,8 +40,8 @@ nav {
 }
 
 .logo {
-    padding: 10px;
-    padding-left: 30px;
+    padding: 20px 0 0 0;
+    /* padding-left: 30px; */
     width: auto;
     float: left;
 }
@@ -83,84 +87,106 @@ a:hover {
   
 /*   End nav bar for small screens   */
 
-.section-main {
-    display: flex;
+.main__section {
+    /* display: flex; */
+    width: 70%;
+    padding-right: 30px;
     flex-direction: column;
-    padding-left: 30px;
-    padding-right: 20px;
+    /* padding-left: 30px;
+    padding-right: 20px; */
     order: 1;
+    margin-bottom: 100px;
 }
 
-.main-h1 {
-    font-size: 5em;
-    font-weight: 1000;
-    position: relative;
-    flex-basis: 1300px;
-    order: 1;
+.main__heading {
+    font-size: 4.5em;
+    line-height: 1;
+    font-weight: bolder;
+    padding: 0 45px 0 0;
+    /* position: relative; */
+    /* flex-basis: 1300px; */
+    /* order: 1; */
 }
 
-.main-div {
+.main__info {
     font-size: 1.2em;
     color: var(--dark-grayish-blue);
-    order: 2;
+    padding: 0 0 0 50px;
+     /* order: 2; */
 }
 
-button {
-    margin-top: 80px;
-    padding: 15px 45px;
+.main__info p {
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* CSS Specificity */
+.main__info button {
+    margin-top: 50px;
+    padding: 15px 25px;
     border-radius: 0px;
     border: none;
     background-color: var(--soft-red);
     color: white;
     font-weight: bold;
     cursor: pointer;
+    letter-spacing: 5px;
+    font-size: 12px;
 }
 
-button:hover {
+.main__info button:hover {
     background-color: var(--very-dark-blue);
     transition: background-color 0.5s;
 }
 
-.fill {
+.img__fill {
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-bottom: 30px;
     order: 1;
 }
 
-.fill img {
+.img__fill img {
     max-width: 100%;
     height: auto;
 }
 
-.div-main {
-    order: 2;
+.mobile-img {
+    display: none;
 }
 
-.aside {
+.content__fill {
+    display: flex;
+    flex-direction: row;
+}
+
+.content__fill div {
+    width: 50%;
+}
+
+.aside__section {
     /*margin-left: -50px;*/
-    width: 70%;
-    margin-right: 35px;
+    width: 30%;
     background-color: var(--very-dark-blue);
     height: auto;
     order: 2;
 }
 
-.aside h1 {
+.aside__section h1 {
     font-size: xx-large;
     font-weight: bolder;
     padding: 20px;
 }
 
-.aside h3 {
+.aside__section h3 {
     color: white;
     font-size: 1.3em;
     font-weight: bold;
     padding: 10px 20px;
 }
 
-.aside p {
+.aside__section p {
     color: white;
     padding-left: 20px;
     padding-right: 20px;
@@ -175,7 +201,8 @@ button:hover {
     margin-bottom: 50px;    
 }
 
-.flex-container {
+.container {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
 }
@@ -187,7 +214,7 @@ button:hover {
 
 .lower-section {
     padding: 35px;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     width: 33.3%;
 }
@@ -227,7 +254,10 @@ button:hover {
 }
 
 /* Media Queries for Smaller Screens */
-@media (max-width: 1309px) {
+@media (max-width: 414px) {
+    .body-wrapper {
+        padding: 5%;
+    }
     .icon {
       display: block;
       width: 100%;
@@ -249,7 +279,36 @@ button:hover {
       border-bottom: 1px solid #333;
       float: none;
     }
-  }
+    .content__fill, .container {
+        flex-direction: column;
+    }
+
+    .main__section, 
+    .aside__section, 
+    .content__fill div {
+        width: 100%;
+    }
+
+    .desktop-img {
+        display: none;
+    }
+    .mobile-img {
+        display: block;
+    }
+
+    .main__section {
+        padding-right: 0px;
+    }
+
+    .main__heading {
+        font-size: 2.8em;
+    }
+
+    .main__info {
+        padding: 0px;
+        margin-top: 20px;
+    }
+}
 
 @media screen and (max-width: 800) {
     .flex-container, .lower-section, .lower-section {
