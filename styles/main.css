@@ -83,6 +83,150 @@ a:hover {
   
 /*   End nav bar for small screens   */
 
+.section-main {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 20px;
+    order: 1;
+}
+
+.main-h1 {
+    font-size: 5em;
+    font-weight: 1000;
+    position: relative;
+    flex-basis: 1300px;
+    order: 1;
+}
+
+.main-div {
+    font-size: 1.2em;
+    color: var(--dark-grayish-blue);
+    order: 2;
+}
+
+button {
+    margin-top: 80px;
+    padding: 15px 45px;
+    border-radius: 0px;
+    border: none;
+    background-color: var(--soft-red);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--very-dark-blue);
+    transition: background-color 0.5s;
+}
+
+.fill {
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 30px;
+    order: 1;
+}
+
+.fill img {
+    max-width: 100%;
+    height: auto;
+}
+
+.div-main {
+    order: 2;
+}
+
+.aside {
+    /*margin-left: -50px;*/
+    width: 70%;
+    margin-right: 35px;
+    background-color: var(--very-dark-blue);
+    height: auto;
+    order: 2;
+}
+
+.aside h1 {
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 20px;
+}
+
+.aside h3 {
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.aside p {
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    font-size: 1.15em;
+}
+
+.hr-style-1 {
+    border-top: 2px solid #ffffff;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;    
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-container-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.lower-section {
+    padding: 35px;
+    display: flex;
+    flex-direction: row;
+    width: 33.3%;
+}
+
+.lower-section img {
+    order: 1;
+    height: 200px;
+    width: auto;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+.lower-section div {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+}
+
+.lower-section div span {
+    order: 1;
+    color: var(--dark-grayish-blue);
+    font-size: xx-large;
+    padding: 5px 0px 0px 15px;
+}
+
+.lower-section div h4 {
+    order: 2;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 0px 10px 15px;
+}
+
+.lower-section div p {
+    order: 3;
+    color: var(--dark-grayish-blue);
+    padding: 10px 0px 10px 15px;
+}
+
+/* Media Queries for Smaller Screens */
 @media (max-width: 1309px) {
     .icon {
       display: block;
@@ -107,86 +251,8 @@ a:hover {
     }
   }
 
-.section-main {
-    position: relative;
-    width: 70%;
-    float: left;
-    padding-left: 30px;
-}
-
-.main-h1 {
-    font-size: 4.5em;
-    font-weight: bold;
-    position: relative;
-    width: 50%;
-    float: left;
-}
-
-.main-div {
-    font-size: 1.2em;
-    color: var(--dark-grayish-blue);
-}
-
-button {
-    margin-top: 60px;
-    padding: 15px 45px;
-    border-radius: 0px;
-    border: none;
-    background-color: var(--soft-red);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: var(--very-dark-blue);
-    transition: background-color 0.5s;
-}
-
-.fill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-
-.fill img {
-    position: relative;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-aside {
-    margin-left: 1100px;
-    margin-right: 35px;
-    background-color: var(--very-dark-blue);
-    height: auto;
-}
-aside h1 {
-    font-size: xx-large;
-    font-weight: bolder;
-    padding: 20px;
-}
-
-aside h3 {
-    color: white;
-    font-size: 1.3em;
-    font-weight: bold;
-    padding: 10px 20px;
-}
-
-aside p {
-    color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 50px;
-    font-size: 1.15em;
-}
-
-.hr-style-1 {
-    border-top: 2px solid #ffffff;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 50px;    
+@media screen and (max-width: 800) {
+    .flex-container, .lower-section, .lower-section {
+        flex-direction: column;
+    }
 }
