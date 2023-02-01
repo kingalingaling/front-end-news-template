@@ -186,6 +186,10 @@ a:hover {
     padding: 10px 20px;
 }
 
+.aside__section h3 a:hover {
+    color: var(--soft-orange) !important;
+}
+
 .aside__section p {
     color: white;
     padding-left: 20px;
@@ -212,45 +216,48 @@ a:hover {
     flex-direction: column;
 }
 
-.lower-section {
-    padding: 35px;
-    /* display: flex; */
-    flex-direction: row;
-    width: 33.3%;
+.lower-container {
+    justify-content: space-between;
 }
 
-.lower-section img {
+.lower__div {
+    display: flex;
+    width: 33.3%;
+    flex-direction: row;
+}
+
+.lower-img-div {
     order: 1;
-    height: 200px;
-    width: auto;
-    padding-right: 10px;
+    width: 30%;
+}
+
+.lower-img-div img {
+    height: auto;
+    width: 100%;
+}
+
+.lower-alt-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    order: 2;
+    width: 70%;
+}
+
+.lower-alt-div span {
+    color: var(--grayish-blue);
+    font-size: 2em;
+    font-weight: bolder;
     padding-bottom: 20px;
 }
 
-.lower-section div {
-    display: flex;
-    flex-direction: column;
-    order: 2;
+.lower-alt-div h4 {
+    padding-bottom: 20px;
+    font-weight: bolder;
 }
 
-.lower-section div span {
-    order: 1;
+.lower-alt-div p {
     color: var(--dark-grayish-blue);
-    font-size: xx-large;
-    padding: 5px 0px 0px 15px;
-}
-
-.lower-section div h4 {
-    order: 2;
-    font-weight: bold;
-    font-size: 1.2em;
-    padding: 10px 0px 10px 15px;
-}
-
-.lower-section div p {
-    order: 3;
-    color: var(--dark-grayish-blue);
-    padding: 10px 0px 10px 15px;
 }
 
 /* Media Queries for Smaller Screens */
@@ -283,8 +290,17 @@ a:hover {
         flex-direction: column;
     }
 
+    .container {
+        margin-top: 20px;
+    }
+
+    .lower-container {
+        flex-direction: column;
+    }
+
     .main__section, 
-    .aside__section, 
+    .aside__section,
+    .lower__div, 
     .content__fill div {
         width: 100%;
     }
@@ -292,6 +308,7 @@ a:hover {
     .desktop-img {
         display: none;
     }
+
     .mobile-img {
         display: block;
     }
@@ -308,10 +325,32 @@ a:hover {
         padding: 0px;
         margin-top: 20px;
     }
-}
 
-@media screen and (max-width: 800) {
-    .flex-container, .lower-section, .lower-section {
-        flex-direction: column;
+    .lower__div {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        margin-bottom: 15px;
+    }
+
+    .lower-container {
+        justify-content: safe;
+    }
+
+    .lower-img-div img {
+        height: 100%;
+    }
+
+    .lower-alt-div span {
+        padding-bottom: 5px;
+    }
+    
+    .lower-alt-div h4 {
+        padding-bottom: 5px;
+    }
+    
+    .lower-alt-div {
+        padding-left: 10px;
     }
 }
+
