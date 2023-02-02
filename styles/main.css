@@ -156,6 +156,11 @@ a:hover {
     display: none;
 }
 
+.iframe_fill {
+    width: 790px;
+    height: 330px;
+}
+
 .content__fill {
     display: flex;
     flex-direction: row;
@@ -296,6 +301,11 @@ a:hover {
 
     .lower-container {
         flex-direction: column;
+    }
+
+    .iframe_fill {
+        width: 375px;
+        height: 330px;
     }
 
     .main__section, 
