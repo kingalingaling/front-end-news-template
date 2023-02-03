@@ -36,8 +36,7 @@ Users should be able to:
 
 ## My process
 I built using html and bootstrap, designing and styling the easy aspects simultaneously. After this, I added the remaining aspects of the design bit by bit.
-Having trouble with the responsive aspects though {^~^'}
-
+I also designed the site from top to bottom using CSS flex and managed to solve all the responsive aspects
 ### Built with
 
 - Semantic HTML5 markup
@@ -46,7 +45,7 @@ Having trouble with the responsive aspects though {^~^'}
 
 ### What I learned
 
-I got back into the process of remembering how to use css and bootstrap. It was pretty easy once I started to remember grids and some other classes. Still issues with the responsiveness though *cough *cough
+I got back into the process of remembering how to use css and bootstrap. It was pretty easy once I started to remember grids and some other classes. I also learnt how to use flex and media queries for responsiveness
 
 
 ### Useful resources
