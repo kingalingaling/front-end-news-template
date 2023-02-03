@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'ubuntu-regular';
+    src: url(../assets/fonts/Ubuntu-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ubuntu-medium';
+    src: url(../assets/fonts/Ubuntu-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ubuntu-bold';
+    src: url(../assets/fonts/Ubuntu-Bold.ttf);
+    font-weight: 700;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: inter;
+    list-style: none;
+    /* outline: 1px solid brown;*/
+
+}
