@@ -130,13 +130,13 @@
       <!-- Step 2 End -->
 
       <!-- Step 3 Start-->
-      <div id="step-3" class="aside-wrapper" style="align-content: space-between;">
+      <div id="step-3" class="aside-wrapper hide" style="align-content: space-between;">
         <div class="heading">
           <h1>Pick add-ons</h1>
           <p>Add-ons help enhance your gaming experience.</p>
         </div>
         <div class="add-ons">
-          <input type="checkbox" name="online-service" id="online-service">
+          <input type="checkbox" name="online-service" class="add-ons-checkbox" id="online-service">
           <div>
             <h3>Online service</h3>
             <p>Access to multiplayer games</p>
@@ -145,7 +145,7 @@
         </div>
 
         <div class="add-ons">
-          <input type="checkbox" name="larger-storage" id="larger-storage">
+          <input type="checkbox" name="larger-storage" class="add-ons-checkbox" id="larger-storage">
           <div>
             <h3>Larger Storage</h3>
             <p>Extra 1TB of cloud save</p>
@@ -154,55 +154,74 @@
         </div>
 
         <div class="add-ons">
-          <input type="checkbox" name="cust-profile" id="cust-profile">
+          <input type="checkbox" name="cust-profile" class="add-ons-checkbox" id="cust-profile">
           <div>
             <h3>Customizable Profile</h3>
             <p>Custom theme on your profile</p>
           </div>
           <p>+$2/mo</p>
         </div>
+
+        <div class="progress" style="margin-top: 60px !important;">
+          <button class="go-back">Go Back</button>
+          <button class="next-step">Next Step</button>
+        </div>
       </div>
       <!-- Step 3 End-->
+
+      <!-- Step 4 Start-->
+      <div id="step-4" class="aside-wrapper hide">
+        <div class="heading">
+          <h1>Finishing up</h1>
+          <p>Double-check everything looks OK before confirming.</p>
+        </div>
+        <div class="summary">
+          <div class="plan-chosen">
+            <div>
+              <h3>Arcade (Monthly)</h3>
+              <a href="">Change</a>
+            </div>
+            <h3>$9/mo</h3>
+          </div>
+          <hr>
+          <div>
+            <div class="add-ons-chosen">
+              <p>Online service</p>
+              <span>+$1/mo</span>
+            </div>
+            <div class="add-ons-chosen">
+              <p>Larger storage</p>
+              <span>+$2/mo</span>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <p>Total (per month)</p>
+          <span>+$12/mo</span>
+        </div>
+        <div class="progress" style="margin-top: 60px !important;">
+          <button class="go-back">Go Back</button>
+          <button class="next-step">Confirm</button>
+        </div>
+      </div>
+      <!-- Step 4 End-->
+
+      <!-- Step 5 Start-->
+      <div id="step-5" class="centralize">
+        <img src="assets/images/icon-thank-you.svg" alt="">
+        <h1>Thank you!</h1>
+        <p>
+          Thanks for confirming your subscription! We hope you have fun 
+          using our platform. If you ever need support, please feel free 
+          to email us at support@loremgaming.com.
+        </p>
+        
+      </div>
+
+      <!--Step 5 End-->
     </aside>
     <!-- Aside Section With Procedures End-->
   </section>
-
-
-  <!-- Step 3 start
-
-  Pick add-ons
-  Add-ons help enhance your gaming experience.
-
-  Online service
-  Access to multiplayer games
-  +$1/mo
-
-  Larger storage
-  Extra 1TB of cloud save
-  +$2/mo
-
-  Customizable Profile
-  Custom theme on your profile
-  +$2/mo
-
-  Go Back
-  Next Step
-
-  Step 3 end -->
-
-  <!-- Step 4 start 
-
-  Finishing up
-  Double-check everything looks OK before confirming. -->
-
-  <!-- Dynamically add subscription and add-on selections here 
-
-  Total (per month/year)
-
-  Go Back
-  Confirm
-
-  Step 4 end -->
 
   <!-- Step 5 start 
 

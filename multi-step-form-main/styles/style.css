@@ -89,7 +89,7 @@ button {
     display: none;
 }
 
-input {
+input[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -100,7 +100,7 @@ input {
     cursor: pointer;
 }
 
-input:hover {
+input[type=text]:hover {
     border: 1px solid var(--purplish-blue);
 }
 
@@ -120,6 +120,8 @@ label {
     flex-direction: column;
     
 }
+
+/* STEP 2 START */
 
 .plan-type {
     border: 1px solid var(--light-gray);
@@ -158,16 +160,14 @@ label {
     justify-content: space-between;
 }
 
-
-/* STEP 2 START */
 .progress {
-    margin-top: 120px;
     display: flex;
     justify-content: space-between;
+    align-items: end;
 }
 
 .go-back {
-    padding: 10px 25px;
+    padding: 10px 0px;
     background-color: white;
     border: none;
     color: var(--cool-gray);
@@ -336,5 +336,117 @@ label {
     justify-content: space-between;
     border: 2px solid var(--purplish-blue);
     border-radius: 7px;
+    padding: 20px;
     margin: 10px 0px;
+    cursor: pointer;
+    background-color: var(--magnolia);
 }
+
+.add-ons:hover {
+    background-color: var(--alabaster);
+}
+
+.add-ons-checkbox {
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+    width: 20px;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* STEP 3 END */
+
+/* STEP 4 START */
+.summary {
+    background-color: var(--magnolia);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-chosen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--marine-blue);
+}
+
+.plan-chosen div h3 {
+    padding-bottom: 5px;
+}
+
+.plan-chosen a {
+    text-decoration: underline;
+    font-size: small;
+}
+
+hr {
+    margin: 30px 0px 25px 0px;
+    border: 1px solid var(--light-gray);
+}
+
+.add-ons-chosen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 0px;
+}
+
+.add-ons-chosen p {
+    color: var(--cool-gray);
+}
+
+.add-ons-chosen span {
+    color: var(--marine-blue);
+}
+
+.total {
+    display: flex;
+    padding: 20px 10px;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.total p {
+    color: var(--cool-gray);
+}
+
+.total span {
+    color: var(--purplish-blue);
+    font-family: ubuntu-bold;
+}
+/* STEP 4 END */
+
+/* STEP 5 START */
+.centralize {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.centralize img {
+    padding-bottom: 15px;
+}
+
+.centralize h1 {
+    font-family: ubuntu-bold;
+    text-align: center;
+    color: var(--marine-blue);
+    font-size: 2.5em;
+    padding: 10px 0px;
+}
+
+.centralize p {
+    color: var(--cool-gray);
+    text-align: center;
+    padding-top: 15px;
+}
+
+/* STEP 5 END */
