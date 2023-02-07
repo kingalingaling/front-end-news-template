@@ -293,6 +293,7 @@ label {
     flex-direction: row;
     margin-bottom: 30px;
 }
+
 .step-info-div {
     width: 80%;
     display: flex;
@@ -450,3 +451,57 @@ hr {
 }
 
 /* STEP 5 END */
+
+/* Media Queries for Smaller Screens */
+@media (max-width:414px) {
+    .body-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    .section-wrapper {
+        padding: 0px;
+        background-color: white;
+        border-radius: 0px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    .main-section {
+        padding: 30px 80px;
+        margin: 0px;
+        width: 100%;
+        background: url(../assets/images/bg-sidebar-mobile.svg);
+        background-repeat: no-repeat;
+        display: flex;
+        height: 172px;
+        flex-direction: row;
+        justify-content: space-around;
+        position: absolute;
+    }
+
+    .step-info-div {
+        display: none;
+    }
+
+    .step-div {
+        margin-bottom: 0px;
+    }
+
+    .aside-section {
+        background-color: var(--alabaster);
+        width: 70%;
+        border-radius: 10px;
+        padding: 5% 9.5%;
+        position: absolute;
+        width: 100%;
+        margin-top: 85px;
+    }
+
+    .centralize {
+        display: none;
+    }
+}
