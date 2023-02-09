@@ -56,7 +56,7 @@
     padding: 5% 9.5%;
 }
 
-.attribution { font-size: 11px; text-align: center; }
+.attribution { font-size: 11px; text-align: center; display: none; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
 .body-wrapper {
@@ -83,6 +83,7 @@ button {
 .heading p {
     color: var(--cool-gray);
     margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 .hide {
@@ -425,7 +426,7 @@ hr {
 
 /* STEP 5 START */
 .centralize {
-    display: flex;
+    display: none; /* flex */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -455,7 +456,7 @@ hr {
 /* Media Queries for Smaller Screens */
 @media (max-width:414px) {
     .body-wrapper {
-        padding: 20px;
+        padding: 0px;
         position: relative;
     }
 
@@ -474,8 +475,9 @@ hr {
         padding: 30px 80px;
         margin: 0px;
         width: 100%;
-        background: url(../assets/images/bg-sidebar-mobile.svg);
+        background: url("../assets/images/bg-sidebar-mobile.svg");
         background-repeat: no-repeat;
+        background-size: cover;
         display: flex;
         height: 172px;
         flex-direction: row;
@@ -493,12 +495,11 @@ hr {
 
     .aside-section {
         background-color: var(--alabaster);
-        width: 70%;
+        width: 90%;
         border-radius: 10px;
         padding: 5% 9.5%;
         position: absolute;
-        width: 100%;
-        margin-top: 85px;
+        margin: 85px 5% 0 5%;
     }
 
     .centralize {
