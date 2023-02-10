@@ -169,7 +169,10 @@ label {
     justify-content: space-between;
     align-items: end;
     position: relative;
-    top: 5em;
+}
+
+.progress-mobile {
+    display: none;
 }
 
 .go-back {
@@ -306,6 +309,13 @@ label {
     margin-bottom: 30px;
 }
 
+.step:hover {
+    background: var(--pastel-blue);
+    border-color: var(--pastel-blue);
+    color: var(--marine-blue);
+    cursor: pointer;
+}
+
 .step-info-div {
     width: 80%;
     display: flex;
@@ -391,6 +401,10 @@ label {
     line-height: 1.8;
 }
 
+.add-ons p {
+    color: var(--purplish-blue);
+}
+
 /* STEP 3 END */
 
 /* STEP 4 START */
@@ -459,7 +473,7 @@ hr {
 
 /* STEP 5 START */
 .centralize {
-    display: none; /* flex */
+    display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -518,6 +532,24 @@ hr {
         position: absolute;
     }
 
+    .progress {
+        display: none;
+    }
+
+    .progress-mobile {
+        display: block;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        width: 100%;
+    }
+
+    .progress-mobile div {
+        display: flex;
+        justify-content:space-between;
+    }
+
     .step-info-div {
         display: none;
     }
@@ -536,8 +568,9 @@ hr {
     }
 
     .centralize {
-        display: none;
-    }
+        padding: 50px 0px;
+    } 
+
     /* STEP 1 END */
 
     /* STEP 2 START */
