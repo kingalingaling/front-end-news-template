@@ -47,13 +47,17 @@
 }
 
 .aside-wrapper {
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.show {
+    display: flex;
 }
 
 .aside-section {
     width: 70%;
-    padding: 5% 9.5%;
+    padding: 5%;
 }
 
 .attribution { font-size: 11px; text-align: center; display: none; }
@@ -123,7 +127,6 @@ label {
 }
 
 /* STEP 2 START */
-
 .plan-type {
     border: 1px solid var(--light-gray);
     border-radius: 10px;
@@ -165,6 +168,8 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: end;
+    position: relative;
+    top: 5em;
 }
 
 .go-back {
@@ -280,13 +285,19 @@ label {
     border: 2px solid white;
     border-radius: 50%;
     padding: 2px 1px;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     color: white;
     font-family: ubuntu-bold;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.active {
+    background: var(--pastel-blue);
+    border-color: var(--pastel-blue);
+    color: var(--marine-blue);
 }
 
 .step-div {
@@ -317,7 +328,7 @@ label {
 
 .submit-btn {
     align-self: self-end;
-    width: 30%;
+    /* width: 30%; */
     background-color: var(--marine-blue);
     color: white;
     padding: 14px 20px;
@@ -336,16 +347,24 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 2px solid var(--purplish-blue);
+    border: 2px solid var(--light-gray);
     border-radius: 7px;
     padding: 20px;
     margin: 10px 0px;
     cursor: pointer;
-    background-color: var(--magnolia);
 }
 
-.add-ons:hover {
-    background-color: var(--alabaster);
+.add-ons div {
+    width: 70%;
+}
+
+.add-ons:hover{
+    border: 2px solid var(--purplish-blue);
+} 
+
+.add-ons-checked  {
+    background-color: var(--magnolia); 
+    border: 2px solid var(--purplish-blue);
 }
 
 .add-ons-checkbox {
@@ -356,6 +375,20 @@ label {
     outline: none;
     cursor: pointer;
     vertical-align: middle;
+}
+
+.add-ons-checkbox:checked {
+    accent-color: var(--purplish-blue);
+}
+
+.add-ons .content h3 {
+    color: var(--marine-blue)
+}
+
+.add-ons .content p {
+    color: var(--cool-gray);
+    font-size: 14px;
+    line-height: 1.8;
 }
 
 /* STEP 3 END */
@@ -504,5 +537,35 @@ hr {
 
     .centralize {
         display: none;
+    }
+    /* STEP 1 END */
+
+    /* STEP 2 START */
+    .plan-wrapper {
+        flex-direction: column;
+    }
+
+    .plan-type {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .plan-type div {
+        width: 60%;
+        padding: 9px 0 0 0;
+    }
+
+    .plan-type img {
+        margin-bottom: 0%;
+    }
+    /* STEP 2 END */
+
+    /* STEP 3 START */
+    .add-ons div {
+        width: 60%;
     }
 }

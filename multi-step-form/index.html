@@ -15,7 +15,7 @@
     <!-- Main Section With Step Names Start-->
     <main class="main-section">
       <div class="step-div">
-        <div class="step">1</div>
+        <div class="step active">1</div>
         <div class="step-info-div">
           <p class="step-number">STEP 1</p>
           <p class="step-name">Your Info</p>
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Step 2 Start -->
-      <div id="step-2" class="aside-wrapper hide">
+      <div id="step-2" class="aside-wrapper">
         <div class="heading">
           <h1>Select your plan</h1>
           <p>You have the option of monthly or yearly billing.</p>
@@ -80,46 +80,52 @@
         <div class="plan-wrapper">
           <div class="plan-type">
             <img src="assets/images/icon-arcade.svg" alt="">
-            <h3>Arcade</h3>
-            <div class="hide">
-              <p>$9/mo</p>
-            </div>
-            <div class="yearly">
-              <p>$90/yr</p>
-              <span>2 months free</span>
+            <div>
+              <h3>Arcade</h3>
+              <div class="hide">
+                <p>$9/mo</p>
+              </div>
+              <div class="yearly">
+                <p>$90/yr</p>
+                <span>2 months free</span>
+              </div>
             </div>
           </div>
 
           <div class="plan-type">
             <img src="assets/images/icon-advanced.svg" alt="">
-            <h3>Advanced</h3>
-            <div class="hide">
-              <p>$12/mo</p>
-            </div>
-            <div class="yearly">
-              <p>$120/yr</p>
-              <span>2 months free</span>
+            <div>
+              <h3>Advanced</h3>
+              <div class="hide">
+                <p>$12/mo</p>
+              </div>
+              <div class="yearly">
+                <p>$120/yr</p>
+                <span>2 months free</span>
+              </div>
             </div>
           </div>
 
           <div class="plan-type">
             <img src="assets/images/icon-pro.svg" alt="">
-            <h3>Pro</h3>
-            <div class="hide">
-              <p>$15/mo</p>
-            </div>
-            <div class="yearly">
-              <p>$150/yr</p>
-              <span>2 months free</span>
+            <div>
+              <h3>Pro</h3>
+              <div class="hide">
+                <p>$15/mo</p>
+              </div>
+              <div class="yearly">
+                <p>$150/yr</p>
+                <span>2 months free</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="toggle-div">
           <label class="toggle">
-            <span class="toggle-label checked">Monthly</span>
+            <span class="toggle-label">Monthly</span>
             <input class="toggle-checkbox" type="checkbox">
             <div class="toggle-switch"></div>
-            <span class="toggle-label">Yearly</span>
+            <span class="toggle-label checked">Yearly</span>
           </label>          
         </div>
         <div class="progress">
@@ -130,14 +136,14 @@
       <!-- Step 2 End -->
 
       <!-- Step 3 Start-->
-      <div id="step-3" class="aside-wrapper hide" style="align-content: space-between;">
+      <div id="step-3" class="aside-wrapper show" style="align-content: space-between;">
         <div class="heading">
           <h1>Pick add-ons</h1>
           <p>Add-ons help enhance your gaming experience.</p>
         </div>
-        <div class="add-ons">
+        <div class="add-ons add-ons-checked">
           <input type="checkbox" name="online-service" class="add-ons-checkbox" id="online-service">
-          <div>
+          <div class="content">
             <h3>Online service</h3>
             <p>Access to multiplayer games</p>
           </div>
@@ -146,7 +152,7 @@
 
         <div class="add-ons">
           <input type="checkbox" name="larger-storage" class="add-ons-checkbox" id="larger-storage">
-          <div>
+          <div class="content">
             <h3>Larger Storage</h3>
             <p>Extra 1TB of cloud save</p>
           </div>
@@ -155,7 +161,7 @@
 
         <div class="add-ons">
           <input type="checkbox" name="cust-profile" class="add-ons-checkbox" id="cust-profile">
-          <div>
+          <div class="content">
             <h3>Customizable Profile</h3>
             <p>Custom theme on your profile</p>
           </div>
@@ -170,7 +176,7 @@
       <!-- Step 3 End-->
 
       <!-- Step 4 Start-->
-      <div id="step-4" class="aside-wrapper hide">
+      <div id="step-4" class="aside-wrapper">
         <div class="heading">
           <h1>Finishing up</h1>
           <p>Double-check everything looks OK before confirming.</p>
@@ -207,7 +213,7 @@
       <!-- Step 4 End-->
 
       <!-- Step 5 Start-->
-      <div id="step-5" class="centralize hide">
+      <div id="step-5" class="centralize">
         <img src="assets/images/icon-thank-you.svg" alt="">
         <h1>Thank you!</h1>
         <p>
