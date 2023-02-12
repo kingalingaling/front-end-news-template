@@ -51,10 +51,6 @@
     flex-direction: column;
 }
 
-.show {
-    display: flex;
-}
-
 .aside-section {
     width: 70%;
     padding: 5%;
@@ -309,12 +305,12 @@ label {
     margin-bottom: 30px;
 }
 
-.step:hover {
+/* .step:hover {
     background: var(--pastel-blue);
     border-color: var(--pastel-blue);
     color: var(--marine-blue);
     cursor: pointer;
-}
+} */
 
 .step-info-div {
     width: 80%;
@@ -473,7 +469,7 @@ hr {
 
 /* STEP 5 START */
 .centralize {
-    display: flex; 
+    display: none; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -496,6 +492,10 @@ hr {
     color: var(--cool-gray);
     text-align: center;
     padding-top: 15px;
+}
+
+.show {
+    display: flex;
 }
 
 /* STEP 5 END */

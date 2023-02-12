@@ -50,7 +50,7 @@
 
     <!-- Aside Section With Procedures Start-->
     <aside class="aside-section">
-      <div id="step-1" class="aside-wrapper">
+      <div id="step-1" class="aside-wrapper show">
         <div class="heading">
           <h1>Personal info</h1>
           <p>Please provide your name, email address, and phone number.</p>
@@ -66,13 +66,16 @@
             <label for="lname">Phone Number</label>
             <input type="text" id="lname" name="lastname" placeholder="e.g. +1 234 567 890">
           
-            <input class="submit-btn" type="submit" value="Next Step">
+            <!-- <input id="submit-p-info" class="submit-btn" type="button" value="Next Step"> -->
           </form>
+        </div>
+        <div class="progress" style="margin-top: 120px; justify-content: right;">
+          <button id="submit-p-info" class="next-step">Next Step</button>
         </div>
       </div>
 
       <!-- Step 2 Start -->
-      <div id="step-2" class="aside-wrapper show">
+      <div id="step-2" class="aside-wrapper">
         <div class="heading">
           <h1>Select your plan</h1>
           <p>You have the option of monthly or yearly billing.</p>
@@ -129,8 +132,8 @@
           </label>          
         </div>
         <div class="progress" style="margin-top: 50px;">
-          <button class="go-back">Go Back</button>
-          <button class="next-step">Next Step</button>
+          <button id="back-to-step-1" class="go-back">Go Back</button>
+          <button id="submit-plan" class="next-step">Next Step</button>
         </div>
       </div>
       <!-- Step 2 End -->
@@ -169,8 +172,8 @@
         </div>
 
         <div class="progress" style="margin-top: 60px !important;">
-          <button class="go-back">Go Back</button>
-          <button class="next-step">Next Step</button>
+          <button id="back-to-step-2" class="go-back">Go Back</button>
+          <button id="submit-add-ons" class="next-step">Next Step</button>
         </div>
       </div>
       <!-- Step 3 End-->
@@ -206,8 +209,8 @@
           <span>+$12/mo</span>
         </div>
         <div class="progress" style=" margin-top: 60px !important;">
-          <button class="go-back">Go Back</button>
-          <button class="next-step">Confirm</button>
+          <button id="back-to-step-3" class="go-back">Go Back</button>
+          <button id="confirm" class="next-step">Confirm</button>
         </div>
       </div>
       <!-- Step 4 End-->
@@ -232,24 +235,16 @@
   <!-- Progress; Go Back and Next Step Mobile-->
   <section class="progress-mobile">
     <div>
-      <button class="go-back">Go Back</button>
-      <button class="next-step">Next Step</button>
+      <button id="mob-back" class="go-back">Go Back</button>
+      <button id="mob-next" class="next-step">Next Step</button>
     </div>
   </section>
-
-  <!-- Step 5 start 
-
-  Thank you!
-
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
-  to email us at support@loremgaming.com.
-
-  Step 5 end -->
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+
+  <script src="scripts/alt.js"></script>
 </body>
 </html>
