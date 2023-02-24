@@ -1,5 +1,6 @@
 const p_info = document.getElementById('step-1')
 const p_info_button = document.getElementById('submit-p-info')
+
 const select_plan = document.getElementById('step-2')
 const select_plan_button = document.getElementById('submit-plan') 
 const back_to_step_1 = document.getElementById('back-to-step-1')

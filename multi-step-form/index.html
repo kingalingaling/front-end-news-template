@@ -15,7 +15,7 @@
     <!-- Main Section With Step Names Start-->
     <main class="main-section">
       <div class="step-div">
-        <div class="step active">1</div>
+        <div class="step active" id="step_nav_1">1</div>
         <div class="step-info-div">
           <p class="step-number">STEP 1</p>
           <p class="step-name">Your Info</p>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="step-div">
-        <div class="step">2</div>
+        <div class="step" id="step_nav_2">2</div>
         <div class="step-info-div">
           <p class="step-number">STEP 2</p>
           <p class="step-name">Select plan</p>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="step-div">
-        <div class="step">3</div>
+        <div class="step" id="step_nav_3">3</div>
         <div class="step-info-div">
           <p class="step-number">STEP 3</p>
           <p class="step-name">Add-ons</p>
@@ -39,7 +39,7 @@
       </div>
     
       <div class="step-div">
-        <div class="step">4</div>
+        <div class="step" id="step_nav_4">4</div>
         <div class="step-info-div">
           <p class="step-number">STEP 4</p>
           <p class="step-name">Summary</p>
@@ -90,7 +90,9 @@
           <p>You have the option of monthly or yearly billing.</p>
         </div>
         <div class="plan-wrapper">
-          <div class="plan-type">
+          
+          <input type="radio" name="plan" value="Arcade" id="arcade" checked>
+          <label class="plan-type plan-active" for="arcade">
             <img src="assets/images/icon-arcade.svg" alt="">
             <div>
               <h3>Arcade</h3>
@@ -102,9 +104,10 @@
                 <span>2 months free</span>
               </div>
             </div>
-          </div>
+          </label>
 
-          <div class="plan-type">
+          <input type="radio" name="plan" value="Advanced" id="advanced">
+          <label class="plan-type" for="advanced">
             <img src="assets/images/icon-advanced.svg" alt="">
             <div>
               <h3>Advanced</h3>
@@ -116,9 +119,10 @@
                 <span>2 months free</span>
               </div>
             </div>
-          </div>
+          </label>
 
-          <div class="plan-type">
+          <input type="radio" name="plan" value="Pro" id="pro">
+          <label class="plan-type" for="pro">
             <img src="assets/images/icon-pro.svg" alt="">
             <div>
               <h3>Pro</h3>
@@ -130,7 +134,8 @@
                 <span>2 months free</span>
               </div>
             </div>
-          </div>
+          </label>
+
         </div>
         <div class="toggle-div">
           <label class="toggle">
