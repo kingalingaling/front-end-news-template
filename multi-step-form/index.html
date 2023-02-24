@@ -57,14 +57,23 @@
         </div>
         <div>
           <form class="form">
-            <label for="fname">Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="e.g. Stephen King">
+            <div class="form-labels">
+              <label for="fname">Name</label>
+              <span id="nameError">This field is required</span>
+            </div>
+            <input type="text" id="name" name="name" placeholder="e.g. Stephen King">
         
-            <label for="lname">Email Address</label>
-            <input type="text" id="lname" name="lastname" placeholder="e.g. stephenking@lorem.com">
+            <div class="form-labels">
+              <label for="lname">Email Address</label>
+              <span id="emailError">This field is required</span>
+            </div>
+            <input type="text" id="email" name="email" placeholder="e.g. stephenking@lorem.com">
 
-            <label for="lname">Phone Number</label>
-            <input type="text" id="lname" name="lastname" placeholder="e.g. +1 234 567 890">
+            <div class="form-labels">
+              <label for="lname">Phone Number</label>
+              <span id="phoneError">This field is required</span>
+            </div>
+            <input type="text" id="phone" name="phone" placeholder="e.g. +1 234 567 890">
           
             <!-- <input id="submit-p-info" class="submit-btn" type="button" value="Next Step"> -->
           </form>
@@ -245,6 +254,6 @@
     Coded by <a href="#">Your Name Here</a>.
   </div>
 
-  <script src="scripts/alt.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>

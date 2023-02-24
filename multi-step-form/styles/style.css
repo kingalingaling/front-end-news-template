@@ -105,8 +105,27 @@ input[type=text]:hover {
     border: 1px solid var(--purplish-blue);
 }
 
+#nameError, #emailError, #phoneError {
+    display: none;
+    font-size: 0.8em;
+    color: var(--strawberry-red);
+}
+
+#nameError.visible, #emailError.visible, #phoneError.visible {
+    display: block;
+}
+
+input.invalid {
+    border: 2px solid var(--strawberry-red);
+}
+
 label {
     color: var(--marine-blue);
+}
+
+.form-labels {
+    display: flex;
+    justify-content: space-between;
 }
 
 .main-section {
