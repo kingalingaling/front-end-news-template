@@ -16,6 +16,7 @@
     font-weight: 700;
 }
 
+@import 'animation.css';
 
 :root {
     /* PRIMARY COLORS */
@@ -221,6 +222,7 @@ label.plan-active {
 
 .next-step:hover {
     background-color: var(--purplish-blue);
+    animation: shake 1s;
 }
 
                 /* Toggle Start */
