@@ -55,25 +55,31 @@ p_info_button.addEventListener('click', function () {
 
 function validateInfo(fieldName, errorName, current, next) {
     let valid = true
+    let information = {
+
+    }
     let errCount = 0
-    for(let i=0;i<fieldName.length;i++) {
+
+    for(let i = 0; i < fieldName.length; i++) {
         const field = document.getElementById(fieldName[i])
         const error = document.getElementById(errorName[i])
-        if(!field.value) {
+        if (!field.value) {
             error.classList.add('visible')
             field.classList.add('invalid')
             errCount++
         } else {
+            localStorage.setItem(fieldName[i], field.value)
             error.classList.remove('visible')
             field.classList.remove('invalid')            
         }
     }
     console.log(`No. of empty fields - ${errCount}`)
-    if(errCount < 1){
+    if (errCount < 1){
         current.classList.remove('show')
         next.classList.add('show')
     }
-    return valid
+
+    return valid;
 }
 
 //STEP 2 Reactivity?
@@ -101,16 +107,7 @@ console.log(arcade)
 
 // STEP 2 VALIDATION
 select_plan_button.addEventListener('click', () => {
-    let plan_store = validatePlan(current = select_plan, next = add_ons);
-
-    console.info(plan_store);
-
-    if (!plan_store == "") {
-        nav_step_2.classList.remove('active');
-        nav_step_3.classList.add('active');
-        current.classList.remove('show');
-        next.classList.add('show');
-    } 
+    validatePlan(current = select_plan, next = add_ons);
 })
 
 function validatePlan(current, next) {
@@ -122,45 +119,58 @@ function validatePlan(current, next) {
         }
     }
 
+    // localStorage.setItem("yearly_plan", plans[i].value)
+
+    if (!selected_plan == "") {
+        localStorage.setItem("monthly_plan", selected_plan)
+        nav_step_2.classList.remove('active');
+        nav_step_3.classList.add('active');
+        current.classList.remove('show');
+        next.classList.add('show');
+    } 
+
     return selected_plan;
 }
 
 
+// STEP 3 ADD-ONS
+
+
+
+
+
+// STEP 4 SUMMARY
+if (summary.classList.contains('show')) {
+    const monthly = localStorage.getItem('monthly_plan');
+    const addons = localStorage.getItem('add_ons');
+
+    document.getElementById("monthly").innerHTML = monthly;
+}
 
 let clicks_forward = [p_info_button, select_plan_button, add_ons_button, finalize] //4
 let clicks_backward = [back_to_step_1, back_to_step_2, back_to_step_3] //3
 let pages = [p_info, select_plan, add_ons, summary, thanks] //5
+// pages: 0,1,2,3,4
 let navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
 
-
-// for (let click of clicks_forward) {
-//     let num = clicks_forward.indexOf(click)
-
-//     click.onclick = function() {
-
-//         pages[num].classList.remove('show');
-//         pages[num+1].classList.add('show');
-
-
-//         navigs[num].classList.add('active');
-//     }
-// }
-
 for (let click of clicks_backward) {
-    let num = clicks_backward.indexOf(click)
-    click.onclick = function() {
-        if(num==0) {
-            pages[num].classList.remove('show')
-            p_info.classList.add('show');
-            navigs[num+1].classList.remove('active');
-            nav_step_1.classList.add('active');
+    let num = clicks_backward.indexOf(click);
 
-        } else {
-            pages[num].classList.remove('show')
-            pages[num-1].classList.add('show')
+    console.log(click)
 
-            navigs[num-1].classList.remove('active');
-            navigs[num-2].classList.add('active');
+    click.addEventListener('click', () => {
+        pages[num].classList.add('show');
+        navigs[num].classList.add('active');
+
+        for (let i = 0; i < pages.length - 2; i++) {
+            if (num !== i) {
+                pages[i].classList.remove('show');
+                navigs[i].classList.remove('active');
+            }
         }
-    }
+    })  
+
 }
+
+// "5" != 5 // TRUE
+// "5" !== 5 //FALSE
