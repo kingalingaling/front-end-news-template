@@ -11,6 +11,24 @@ const nav_step_2 = document.querySelector("#step_nav_2");
 const nav_step_3 = document.querySelector("#step_nav_3");
 const nav_step_4 = document.querySelector("#step_nav_4");
 
+/* Plan Label IDs
+const arcade_label = document.querySelector('#arcade-label');
+const advanced_label = document.querySelector('#advanced-label');
+const pro_label = document.querySelector('#pro-label'); */
+
+const arcade_label = document.getElementById('arcade-label');
+const advanced_label = document.getElementById('advanced-label');
+const pro_label = document.getElementById('pro-label');
+
+/* Plan IDs
+let arcade = document.querySelector("#arcade");
+let advanced = document.querySelector("#advanced");
+let pro = document.querySelector("#pro"); */
+
+let arcade = document.getElementById("arcade");
+let advanced = document.getElementById("advanced");
+let pro = document.getElementById("pro");
+
 //Submit IDs
 const p_info_button = document.getElementById('submit-p-info')
 const select_plan_button = document.getElementById('submit-plan')
@@ -58,6 +76,28 @@ function validateInfo(fieldName, errorName, current, next) {
     return valid
 }
 
+//STEP 2 Reactivity?
+let labels = [arcade_label, advanced_label, pro_label];
+let plans = [arcade, advanced, pro];
+//let plans = document.querySelectorAll("input[name=plans]");
+console.log(arcade)
+/* for (let i = 0; i < plans.length; i++) {
+    plans[i].addEventListener('change', function() {
+        if (plans[i].checked){
+            labels[i].classList.add('plan-active')
+        } else {
+            labels[i].classList.remove('plan-active')
+        }
+  })
+}
+
+/* for (let i=0; i<labels.length; i++) {
+    if (plans[i].checked) {
+        labels[i].classList.add('plan-active');
+    } else {
+        labels[i].classList.remove('plan-active');
+    }
+} */
 
 // STEP 2 VALIDATION
 select_plan_button.addEventListener('click', () => {
@@ -75,11 +115,6 @@ select_plan_button.addEventListener('click', () => {
 
 function validatePlan(current, next) {
     let selected_plan = "";
-
-    let arcade = document.querySelector("#arcade");
-    let advanced = document.querySelector("#advanced");
-    let pro = document.querySelector("#pro");
-    let plans = [arcade, advanced, pro];
 
     for (let i = 0; i < plans.length; i++) {
         if (plans[i].checked) {
