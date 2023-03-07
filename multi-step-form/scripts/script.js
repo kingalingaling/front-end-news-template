@@ -29,6 +29,11 @@ let arcade = document.getElementById("arcade");
 let advanced = document.getElementById("advanced");
 let pro = document.getElementById("pro");
 
+// Add-On IDs
+const online_service = document.getElementById('online-service')
+const larger_storage = document.getElementById('larger-storage')
+const custom_profile = document.getElementById('cust-profile')
+
 //Submit IDs
 const p_info_button = document.getElementById('submit-p-info')
 const select_plan_button = document.getElementById('submit-plan')
@@ -45,10 +50,9 @@ const back_to_step_3 = document.getElementById('back-to-step-3')
 p_info_button.addEventListener('click', function () {
     let info_store = validateInfo(fieldName=['name', 'email', 'phone'], errorName=['nameError', 'emailError', 'phoneError'], current=p_info, next=select_plan) 
     
-    if (info_store) {
-        nav_step_1.classList.remove('active');
-        nav_step_2.classList.add('active');
-    } 
+    // if (info_store) {
+        
+    // } 
 
     // encapsulation, inheritance, polymophism, abstraction
 })
@@ -77,6 +81,8 @@ function validateInfo(fieldName, errorName, current, next) {
     if (errCount < 1){
         current.classList.remove('show')
         next.classList.add('show')
+        nav_step_1.classList.remove('active');
+        nav_step_2.classList.add('active');
     }
 
     return valid;
@@ -85,25 +91,7 @@ function validateInfo(fieldName, errorName, current, next) {
 //STEP 2 Reactivity?
 let labels = [arcade_label, advanced_label, pro_label];
 let plans = [arcade, advanced, pro];
-//let plans = document.querySelectorAll("input[name=plans]");
-console.log(arcade)
-/* for (let i = 0; i < plans.length; i++) {
-    plans[i].addEventListener('change', function() {
-        if (plans[i].checked){
-            labels[i].classList.add('plan-active')
-        } else {
-            labels[i].classList.remove('plan-active')
-        }
-  })
-}
 
-/* for (let i=0; i<labels.length; i++) {
-    if (plans[i].checked) {
-        labels[i].classList.add('plan-active');
-    } else {
-        labels[i].classList.remove('plan-active');
-    }
-} */
 
 // STEP 2 VALIDATION
 select_plan_button.addEventListener('click', () => {
@@ -134,7 +122,41 @@ function validatePlan(current, next) {
 
 
 // STEP 3 ADD-ONS
+let add_on_options = [online_service, larger_storage, custom_profile]
+add_ons_button.addEventListener('click', () => {
+    validateAddOns(current=add_ons, next=summary)
+})
 
+function validateAddOns(current, next) {
+    let addOns_chosen = []
+
+    for (let i=0;i<add_on_options;i++) {
+        if (add_on_options[i].checked) {
+            addOns_chosen.push(add_on_options[i].value)
+        }
+    }
+
+    if (addOns_chosen.length > 0) {
+        localStorage.setItem('monthly_addOns', JSON.stringify(addOns_chosen))
+    }
+
+    nav_step_3.classList.remove('active');
+    nav_step_4.classList.add('active');
+    current.classList.remove('show');
+    next.classList.add('show');
+
+    return addOns_chosen
+}
+console.log(online_service.value)
+
+
+/*for (let i = 1; i < add_on_options.length; i++) {
+    if (add_on_options[i].checked) {
+        add_on_options[i].parentElement.classList.add('add-ons-checked')
+    } else {
+        add_on_options[i].parentElement.classList.remove('add-ons-checked')
+    }
+}*/
 
 
 
@@ -156,7 +178,7 @@ let navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
 for (let click of clicks_backward) {
     let num = clicks_backward.indexOf(click);
 
-    console.log(click)
+    //console.log(click)
 
     click.addEventListener('click', () => {
         pages[num].classList.add('show');

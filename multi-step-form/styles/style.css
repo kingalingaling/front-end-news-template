@@ -160,6 +160,14 @@ label {
     cursor: pointer;
 }
 
+.radio-div label {
+    cursor: pointer;
+}
+
+.radio-div:hover {
+    border: 1px solid var(--purplish-blue);
+}
+
 .plan-img {
     width: 30%;
     margin-bottom: 50%;
@@ -408,10 +416,10 @@ input[type="radio"]:checked + div {
     border: 2px solid var(--purplish-blue);
 } 
 
-.add-ons-checked  {
+/* .add-ons-checked  {
     background-color: var(--magnolia); 
     border: 2px solid var(--purplish-blue);
-}
+} */
 
 .add-ons-checkbox {
     border: 1px solid var(--light-gray);
@@ -426,6 +434,16 @@ input[type="radio"]:checked + div {
 .add-ons-checkbox:checked {
     accent-color: var(--purplish-blue);
 }
+
+.add-ons:has(input[type="checkbox"]:checked){
+    border: 2px solid var(--purplish-blue);
+    background-color: var(--magnolia);   
+}
+
+/* .add-ons input[type="checkbox"]:checked {
+    border: 1px solid var(--purplish-blue);
+    background-color: var(--magnolia);
+} */
 
 .add-ons .content h3 {
     color: var(--marine-blue)
