@@ -128,16 +128,18 @@ add_ons_button.addEventListener('click', () => {
 })
 
 function validateAddOns(current, next) {
-    let addOns_chosen = []
+    var addOns_chosen = []
 
-    for (let i=0;i<add_on_options;i++) {
+    for (let i = 0; i < add_on_options; i++) {
         if (add_on_options[i].checked) {
             addOns_chosen.push(add_on_options[i].value)
         }
     }
+    console.log(add_on_options[0].value)
+    console.log(addOns_chosen)
 
     if (addOns_chosen.length > 0) {
-        localStorage.setItem('monthly_addOns', JSON.stringify(addOns_chosen))
+        localStorage.setItem('monthly_addOns', JSON.stringify(addOns_chosen));
     }
 
     nav_step_3.classList.remove('active');
@@ -147,7 +149,7 @@ function validateAddOns(current, next) {
 
     return addOns_chosen
 }
-console.log(online_service.value)
+
 
 
 /*for (let i = 1; i < add_on_options.length; i++) {
