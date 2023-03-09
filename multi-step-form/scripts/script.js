@@ -46,6 +46,39 @@ const back_to_step_2 = document.getElementById('back-to-step-2')
 const back_to_step_3 = document.getElementById('back-to-step-3')
 
 
+const clicks_forward = [p_info_button, select_plan_button, add_ons_button, finalize] //4
+const clicks_backward = [back_to_step_1, back_to_step_2, back_to_step_3] //3
+const pages = [p_info, select_plan, add_ons, summary, thanks] //5
+// pages: 0,1,2,3,4
+const navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    let step_status = localStorage.getItem('current_step');
+    
+    if (step_status == undefined || 0) {
+        localStorage.setItem('current_step', 1);
+
+    } else if (step_status >= 2) {
+        // append the active class to the current step navigation
+        navigs[step_status - 2].classList.remove('active');
+        navigs[step_status - 1].classList.add('active');
+
+        // append the show class to the current step page
+        pages[step_status - 2].classList.remove('show');
+        pages[step_status - 1].classList.add('show');
+
+    } else if (step_status == 5) {
+
+        navigs[step_status - 2].classList.remove('active');
+        pages[step_status - 2].classList.remove('show');
+        pages[step_status - 1].classList.add('show');
+        localStorage.clear();
+    }
+    
+})
+
 // STEP 1 VALIDATION
 p_info_button.addEventListener('click', function () {
     let info_store = validateInfo(fieldName=['name', 'email', 'phone'], errorName=['nameError', 'emailError', 'phoneError'], current=p_info, next=select_plan) 
@@ -83,6 +116,7 @@ function validateInfo(fieldName, errorName, current, next) {
         next.classList.add('show')
         nav_step_1.classList.remove('active');
         nav_step_2.classList.add('active');
+        localStorage.setItem('current_step', 2);
     }
 
     return valid;
@@ -115,6 +149,7 @@ function validatePlan(current, next) {
         nav_step_3.classList.add('active');
         current.classList.remove('show');
         next.classList.add('show');
+        localStorage.setItem('current_step', 3);
     } 
 
     return selected_plan;
@@ -128,14 +163,16 @@ add_ons_button.addEventListener('click', () => {
 })
 
 function validateAddOns(current, next) {
-    var addOns_chosen = []
+    let addOns_chosen = []
 
-    for (let i = 0; i < add_on_options; i++) {
+    for (let i = 0; i < add_on_options.length; i++) {
         if (add_on_options[i].checked) {
             addOns_chosen.push(add_on_options[i].value)
+        } else {
+            addon1 = 0
         }
     }
-    console.log(add_on_options[0].value)
+    
     console.log(addOns_chosen)
 
     if (addOns_chosen.length > 0) {
@@ -146,6 +183,7 @@ function validateAddOns(current, next) {
     nav_step_4.classList.add('active');
     current.classList.remove('show');
     next.classList.add('show');
+    localStorage.setItem('current_step', 4);
 
     return addOns_chosen
 }
@@ -171,11 +209,6 @@ if (summary.classList.contains('show')) {
     document.getElementById("monthly").innerHTML = monthly;
 }
 
-let clicks_forward = [p_info_button, select_plan_button, add_ons_button, finalize] //4
-let clicks_backward = [back_to_step_1, back_to_step_2, back_to_step_3] //3
-let pages = [p_info, select_plan, add_ons, summary, thanks] //5
-// pages: 0,1,2,3,4
-let navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
 
 for (let click of clicks_backward) {
     let num = clicks_backward.indexOf(click);
