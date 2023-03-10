@@ -65,7 +65,7 @@
             <input type="text" id="name" name="name" placeholder="e.g. Stephen King">
         
             <div class="form-labels">
-              <label for="lname">Email Address</label>
+              <label for="email">Email Address</label>
               <span id="emailError">This field is required</span>
             </div>
             <input type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com">
@@ -97,10 +97,10 @@
               <img class="plan-img" src="assets/images/icon-arcade.svg" alt="">
               <div>
                 <h3>Arcade</h3>
-                <div class="hide">
+                <div class="monthly-plan">
                   <p>$9/mo</p>
                 </div>
-                <div class="yearly">
+                <div class="hide yearly-plan">
                   <p>$90/yr</p>
                   <span>2 months free</span>
                 </div>
@@ -114,10 +114,10 @@
               <img class="plan-img" src="assets/images/icon-advanced.svg" alt="">
               <div>
                 <h3>Advanced</h3>
-                <div class="hide">
+                <div class="monthly-plan">
                   <p>$12/mo</p>
                 </div>
-                <div class="yearly">
+                <div class="hide yearly-plan">
                   <p>$120/yr</p>
                   <span>2 months free</span>
                 </div>
@@ -131,10 +131,10 @@
               <img class="plan-img" src="assets/images/icon-pro.svg" alt="">
               <div>
                 <h3>Pro</h3>
-                <div class="hide">
+                <div class="monthly-plan">
                   <p>$15/mo</p>
                 </div>
-                <div class="yearly">
+                <div class="hide yearly-plan">
                   <p>$150/yr</p>
                   <span>2 months free</span>
                 </div>
@@ -145,10 +145,10 @@
         </div>
         <div class="toggle-div">
           <label class="toggle">
-            <span class="toggle-label">Monthly</span>
-            <input class="toggle-checkbox" type="checkbox">
+            <span id="monthly-span" class="toggle-label checked">Monthly</span>
+            <input type="checkbox" class="toggle-checkbox" id="plan-duration" name="plan-duration">
             <div class="toggle-switch"></div>
-            <span class="toggle-label checked">Yearly</span>
+            <span id="yearly-span" class="toggle-label">Yearly</span>
           </label>          
         </div>
         <div class="progress" style="margin-top: 50px;">
@@ -170,7 +170,8 @@
             <h3>Online service</h3>
             <p>Access to multiplayer games</p>
           </div>
-          <p>+$1/mo</p>
+          <p class="monthly-add-ons">+$1/mo</p>
+          <p class="yearly-add-ons hide">+$10/yr</p>
         </div>
 
         <div class="add-ons">
@@ -179,7 +180,8 @@
             <h3>Larger Storage</h3>
             <p>Extra 1TB of cloud save</p>
           </div>
-          <p>+$2/mo</p>
+          <p class="monthly-add-ons">+$2/mo</p>
+          <p class="yearly-add-ons hide">+$20/yr</p>
         </div>
 
         <div class="add-ons">
@@ -188,7 +190,8 @@
             <h3>Customizable Profile</h3>
             <p>Custom theme on your profile</p>
           </div>
-          <p>+$2/mo</p>
+          <p class="monthly-add-ons">+$2/mo</p>
+          <p class="yearly-add-ons hide">+$20/yr</p>
         </div>
 
         <div class="progress" style="margin-top: 60px !important;">

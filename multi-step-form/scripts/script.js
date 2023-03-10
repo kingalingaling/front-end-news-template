@@ -45,6 +45,11 @@ const back_to_step_1 = document.getElementById('back-to-step-1')
 const back_to_step_2 = document.getElementById('back-to-step-2')
 const back_to_step_3 = document.getElementById('back-to-step-3')
 
+//Add-On Texts
+var monthly_add_ons = document.querySelectorAll('.monthly-add-ons')
+var yearly_add_ons = document.querySelectorAll('.yearly-add-ons')
+let add_on_disp = localStorage.getItem('plan-type')
+
 
 const clicks_forward = [p_info_button, select_plan_button, add_ons_button, finalize] //4
 const clicks_backward = [back_to_step_1, back_to_step_2, back_to_step_3] //3
@@ -65,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (step_status == 1){
         navigs[0].classList.add('active')
         pages[0].classList.add('show')
-        
+
     } else if (step_status >= 2) {
         // append the active class to the current step navigation
         navigs[step_status - 2].classList.remove('active');
@@ -156,13 +161,72 @@ function validatePlan(current, next) {
         current.classList.remove('show');
         next.classList.add('show');
         localStorage.setItem('current_step', 3);
+        if (toggle.checked) {
+            localStorage.setItem('plan-type', 'yearly')
+        } else {
+            localStorage.setItem('plan-type', 'monthly')
+        }
+
+        let add_on_disp = localStorage.getItem('plan-type')
+        if (add_on_disp == 'yearly') {
+            monthly_add_ons.forEach((month_add_on) => {
+                month_add_on.classList.add('hide');
+            })
+            yearly_add_ons.forEach((year_add_on) => {
+                year_add_on.classList.remove('hide')
+            })
+        } else {
+            monthly_add_ons.forEach((month_add_on) => {
+                month_add_on.classList.remove('hide');
+            })
+            yearly_add_ons.forEach((year_add_on) => {
+                year_add_on.classList.add('hide')
+            })
+        }
+
     } 
 
     return selected_plan;
 }
 
+//Toggle Plan Duration (Monthly/Yearly)
+const toggle = document.querySelector('#plan-duration')
+const monthly_text = document.getElementById('monthly-span')
+const yearly_text = document.getElementById('yearly-span')
+var monthly_plan = document.querySelectorAll('.monthly-plan')
+var yearly_plan = document.querySelectorAll('.yearly-plan')
+
+console.log(monthly_plan)
+
+toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+        monthly_plan.forEach((month_plan) => {
+            month_plan.classList.add('hide');
+        })
+        yearly_plan.forEach((year_plan) => {
+            year_plan.classList.remove('hide');
+        })
+        monthly_text.classList.remove('checked')
+        yearly_text.classList.add('checked')
+    } else {
+        monthly_plan.forEach((month_plan) => {
+            month_plan.classList.remove('hide');
+        })
+        yearly_plan.forEach((year_plan) => {
+            year_plan.classList.add('hide');
+        })
+        monthly_text.classList.add('checked')
+        yearly_text.classList.remove('checked')
+    }
+})
+
+console.log(toggle.checked)
 
 // STEP 3 ADD-ONS
+//Toggle Add-ons price based on plan selected in step 2
+
+
+
 let add_on_options = [online_service, larger_storage, custom_profile]
 add_ons_button.addEventListener('click', () => {
     validateAddOns(current=add_ons, next=summary)

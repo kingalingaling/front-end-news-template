@@ -94,3 +94,8 @@ input.invalid {
     animation-duration: 2s;
     animation-timing-function: linear;
 }
+
+.monthly-plan, .yearly-plan {
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
