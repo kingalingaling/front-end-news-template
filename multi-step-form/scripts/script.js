@@ -58,8 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let step_status = localStorage.getItem('current_step');
     
     if (step_status == undefined || 0) {
+        navigs[0].classList.add('active')
+        pages[0].classList.add('show')
         localStorage.setItem('current_step', 1);
 
+    } else if (step_status == 1){
+        navigs[0].classList.add('active')
+        pages[0].classList.add('show')
+        
     } else if (step_status >= 2) {
         // append the active class to the current step navigation
         navigs[step_status - 2].classList.remove('active');
