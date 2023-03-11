@@ -162,9 +162,9 @@ function validatePlan(current, next) {
         next.classList.add('show');
         localStorage.setItem('current_step', 3);
         if (toggle.checked) {
-            localStorage.setItem('plan-type', 'yearly')
+            localStorage.setItem('plan-type', 'Yearly')
         } else {
-            localStorage.setItem('plan-type', 'monthly')
+            localStorage.setItem('plan-type', 'Monthly')
         }
 
         let add_on_disp = localStorage.getItem('plan-type')
@@ -258,27 +258,15 @@ function validateAddOns(current, next) {
     return addOns_chosen
 }
 
-
-
-/*for (let i = 1; i < add_on_options.length; i++) {
-    if (add_on_options[i].checked) {
-        add_on_options[i].parentElement.classList.add('add-ons-checked')
-    } else {
-        add_on_options[i].parentElement.classList.remove('add-ons-checked')
-    }
-}*/
-
-
-
-
 // STEP 4 SUMMARY
 if (summary.classList.contains('show')) {
-    const monthly = localStorage.getItem('monthly_plan');
-    const addons = localStorage.getItem('add_ons');
+    let monthly = localStorage.getItem('monthly_plan');
+    let addons = localStorage.getItem('add_ons');
+    let plan_type = localStorage.getItem('plan-type')
 
-    document.getElementById("monthly").innerHTML = monthly;
+    document.getElementById("summary-plan").innerHTML = `${monthly} (${plan_type})`;
+    
 }
-
 
 for (let click of clicks_backward) {
     let num = clicks_backward.indexOf(click);
@@ -299,5 +287,16 @@ for (let click of clicks_backward) {
 
 }
 
-// "5" != 5 // TRUE
-// "5" !== 5 //FALSE
+let arcade_price = 9
+let advanced_price = 12
+let pro_price = 15
+let add_online = 1
+let add_storage, add_cust = 2
+let prices = [arcade_price, advanced_price, pro_price]
+let price_ids = ['arcade-price', 'advanced-price', 'pro-price']
+let year_price_ids = ['year-arcade-price', 'year-advanced-price', 'year-pro-price']
+for (let i=0; i<price_ids.length; i++) {
+    document.getElementById(price_ids[i]).innerHTML = `$${prices[i]}/mo`
+    document.getElementById(year_price_ids[i]).innerHTML = `$${prices[i] *10}/yr` 
+}
+
