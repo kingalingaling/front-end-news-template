@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navigs[0].classList.add('active')
         pages[0].classList.add('show')
 
-    } else if (step_status >= 2) {
+    } else if (step_status == 3) {
+        add_on_prices()
         // append the active class to the current step navigation
         navigs[step_status - 2].classList.remove('active');
         navigs[step_status - 1].classList.add('active');
@@ -80,12 +81,32 @@ document.addEventListener('DOMContentLoaded', () => {
         pages[step_status - 2].classList.remove('show');
         pages[step_status - 1].classList.add('show');
 
-    } else if (step_status == 5) {
+    } else if (step_status == 4) {
+        finish()
+        // append the active class to the current step navigation
+        navigs[step_status - 2].classList.remove('active');
+        navigs[step_status - 1].classList.add('active');
+
+        // append the show class to the current step page
+        pages[step_status - 2].classList.remove('show');
+        pages[step_status - 1].classList.add('show');
+
+    }else if (step_status == 5) {
 
         navigs[step_status - 2].classList.remove('active');
         pages[step_status - 2].classList.remove('show');
         pages[step_status - 1].classList.add('show');
         localStorage.clear();
+
+    } else if (step_status >= 2) {
+        // append the active class to the current step navigation
+        navigs[step_status - 2].classList.remove('active');
+        navigs[step_status - 1].classList.add('active');
+
+        // append the show class to the current step page
+        pages[step_status - 2].classList.remove('show');
+        pages[step_status - 1].classList.add('show');
+        
     }
     
 })
@@ -137,6 +158,23 @@ function validateInfo(fieldName, errorName, current, next) {
 let labels = [arcade_label, advanced_label, pro_label];
 let plans = [arcade, advanced, pro];
 
+const all_prices = {
+    'Arcade': 9,
+    'Advanced': 12,
+    'Pro': 15,
+    'Online service': 1,
+    'Larger storage': 2,
+    'Customizable profile': 2
+}
+
+let prices = [all_prices['Arcade'], all_prices['Advanced'], all_prices['Pro']]
+let price_ids = ['arcade-price', 'advanced-price', 'pro-price']
+let year_price_ids = ['year-arcade-price', 'year-advanced-price', 'year-pro-price']
+for (let i=0; i<price_ids.length; i++) {
+    document.getElementById(price_ids[i]).innerHTML = `$${prices[i]}/mo`
+    document.getElementById(year_price_ids[i]).innerHTML = `$${prices[i] *10}/yr`
+    //localStorage.setItem('') 
+}
 
 // STEP 2 VALIDATION
 select_plan_button.addEventListener('click', () => {
@@ -155,7 +193,7 @@ function validatePlan(current, next) {
     // localStorage.setItem("yearly_plan", plans[i].value)
 
     if (!selected_plan == "") {
-        localStorage.setItem("monthly_plan", selected_plan)
+        localStorage.setItem("selected_plan", selected_plan)
         nav_step_2.classList.remove('active');
         nav_step_3.classList.add('active');
         current.classList.remove('show');
@@ -167,26 +205,30 @@ function validatePlan(current, next) {
             localStorage.setItem('plan-type', 'Monthly')
         }
 
-        let add_on_disp = localStorage.getItem('plan-type')
-        if (add_on_disp == 'yearly') {
-            monthly_add_ons.forEach((month_add_on) => {
-                month_add_on.classList.add('hide');
-            })
-            yearly_add_ons.forEach((year_add_on) => {
-                year_add_on.classList.remove('hide')
-            })
-        } else {
-            monthly_add_ons.forEach((month_add_on) => {
-                month_add_on.classList.remove('hide');
-            })
-            yearly_add_ons.forEach((year_add_on) => {
-                year_add_on.classList.add('hide')
-            })
-        }
+        add_on_prices()
 
     } 
 
     return selected_plan;
+}
+
+function add_on_prices () {
+    let add_on_disp = localStorage.getItem('plan-type')
+    if (add_on_disp == 'Yearly') {
+        monthly_add_ons.forEach((month_add_on) => {
+            month_add_on.classList.add('hide');
+        })
+        yearly_add_ons.forEach((year_add_on) => {
+            year_add_on.classList.remove('hide')
+        })
+    } else {
+        monthly_add_ons.forEach((month_add_on) => {
+            month_add_on.classList.remove('hide');
+        })
+        yearly_add_ons.forEach((year_add_on) => {
+            year_add_on.classList.add('hide')
+        })
+    }
 }
 
 //Toggle Plan Duration (Monthly/Yearly)
@@ -196,7 +238,6 @@ const yearly_text = document.getElementById('yearly-span')
 var monthly_plan = document.querySelectorAll('.monthly-plan')
 var yearly_plan = document.querySelectorAll('.yearly-plan')
 
-console.log(monthly_plan)
 
 toggle.addEventListener('change', () => {
     if (toggle.checked) {
@@ -220,16 +261,15 @@ toggle.addEventListener('change', () => {
     }
 })
 
-console.log(toggle.checked)
 
 // STEP 3 ADD-ONS
 //Toggle Add-ons price based on plan selected in step 2
 
 
-
 let add_on_options = [online_service, larger_storage, custom_profile]
 add_ons_button.addEventListener('click', () => {
     validateAddOns(current=add_ons, next=summary)
+    finish()
 })
 
 function validateAddOns(current, next) {
@@ -246,7 +286,9 @@ function validateAddOns(current, next) {
     console.log(addOns_chosen)
 
     if (addOns_chosen.length > 0) {
-        localStorage.setItem('monthly_addOns', JSON.stringify(addOns_chosen));
+        localStorage.setItem('add-ons-chosen', JSON.stringify(addOns_chosen));
+    } else {
+        localStorage.setItem('add-ons-chosen', '');
     }
 
     nav_step_3.classList.remove('active');
@@ -259,13 +301,72 @@ function validateAddOns(current, next) {
 }
 
 // STEP 4 SUMMARY
-if (summary.classList.contains('show')) {
-    let monthly = localStorage.getItem('monthly_plan');
-    let addons = localStorage.getItem('add_ons');
-    let plan_type = localStorage.getItem('plan-type')
 
-    document.getElementById("summary-plan").innerHTML = `${monthly} (${plan_type})`;
+function finish () {
+    let plan = localStorage.getItem('selected_plan');
+    plan_type = localStorage.getItem('plan-type');
+    document.getElementById("summary-plan").innerHTML = `${plan} (${plan_type})`;
+    var x = '';
+
+    if (localStorage.getItem('add-ons-chosen') != '') {
+        var chosen = JSON.parse(localStorage.getItem('add-ons-chosen'));
+        if (plan_type == 'Yearly') {
+            var total_price = all_prices[plan]*10
+            for(choice of chosen) {
+                x = x + `<div class="add-ons-chosen">
+                <p>${choice}</p>
+                <span>$${all_prices[choice]*10}/yr</span>
+                </div>`
+                total_price = total_price + all_prices[choice]*10
+            }
+            document.getElementById('plan-price').innerHTML = `$${all_prices[plan]*10}/yr`
+            document.getElementById('chosen-add-ons').innerHTML = x
+            document.getElementById('total-text').innerHTML = 'Total (per year)'
+            document.getElementById('total-price').innerHTML = `$${total_price}/yr`
+        } else {
+            var total_price = all_prices[plan]
+            for(choice of chosen) {
+                x = x + `<div class="add-ons-chosen">
+                <p>${choice}</p>
+                <span>$${all_prices[choice]}/mo</span>
+                </div>`
+                total_price = total_price + all_prices[choice]
+            }
+            document.getElementById('plan-price').innerHTML = `$${all_prices[plan]}/mo`
+            document.getElementById('chosen-add-ons').innerHTML = x
+            document.getElementById('total-text').innerHTML = 'Total (per month)'
+            document.getElementById('total-price').innerHTML = `$${total_price}/mo`
+        }
+    } else {
+        if (plan_type == 'Yearly') {
+            var total_price = all_prices[plan]*10
+            document.getElementById('plan-price').innerHTML = `$${all_prices[plan]*10}/yr`
+            document.getElementById('chosen-add-ons').innerHTML = x
+            document.getElementById('total-text').innerHTML = 'Total (per year)'
+            document.getElementById('total-price').innerHTML = `$${total_price}/yr`
+        } else {
+            var total_price = all_prices[plan]
+            document.getElementById('plan-price').innerHTML = `$${all_prices[plan]}/mo`
+            document.getElementById('chosen-add-ons').innerHTML = x
+            document.getElementById('total-text').innerHTML = 'Total (per month)'
+            document.getElementById('total-price').innerHTML = `$${total_price}/mo`
+        }
+    }
     
+    
+
+}
+
+// GO TO STEP 5
+finalize.addEventListener('click', (current=summary,next=thanks) => {
+    end(summary, thanks)
+    localStorage.setItem('current_step', 5);
+})
+
+function end (current, next){
+    next.classList.add('show')
+    current.classList.remove('show')
+    console.log(current)
 }
 
 for (let click of clicks_backward) {
@@ -277,7 +378,7 @@ for (let click of clicks_backward) {
         pages[num].classList.add('show');
         navigs[num].classList.add('active');
 
-        for (let i = 0; i < pages.length - 2; i++) {
+        for (let i = 0; i < pages.length - 1; i++) {
             if (num !== i) {
                 pages[i].classList.remove('show');
                 navigs[i].classList.remove('active');
@@ -287,16 +388,4 @@ for (let click of clicks_backward) {
 
 }
 
-let arcade_price = 9
-let advanced_price = 12
-let pro_price = 15
-let add_online = 1
-let add_storage, add_cust = 2
-let prices = [arcade_price, advanced_price, pro_price]
-let price_ids = ['arcade-price', 'advanced-price', 'pro-price']
-let year_price_ids = ['year-arcade-price', 'year-advanced-price', 'year-pro-price']
-for (let i=0; i<price_ids.length; i++) {
-    document.getElementById(price_ids[i]).innerHTML = `$${prices[i]}/mo`
-    document.getElementById(year_price_ids[i]).innerHTML = `$${prices[i] *10}/yr` 
-}
 
