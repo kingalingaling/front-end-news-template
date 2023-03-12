@@ -46,8 +46,7 @@ const back_to_step_2 = document.getElementById('back-to-step-2')
 const back_to_step_3 = document.getElementById('back-to-step-3')
 
 //Add-On Texts
-var monthly_add_ons = document.querySelectorAll('.monthly-add-ons')
-var yearly_add_ons = document.querySelectorAll('.yearly-add-ons')
+var all_add_ons = document.querySelectorAll('.all-add-ons')
 let add_on_disp = localStorage.getItem('plan-type')
 
 
@@ -59,7 +58,11 @@ const navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    onReload()
+    
+})
 
+function onReload () {
     let step_status = localStorage.getItem('current_step');
     
     if (step_status == undefined || 0) {
@@ -108,8 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pages[step_status - 1].classList.add('show');
         
     }
-    
-})
+}
 
 // STEP 1 VALIDATION
 p_info_button.addEventListener('click', function () {
@@ -214,19 +216,17 @@ function validatePlan(current, next) {
 
 function add_on_prices () {
     let add_on_disp = localStorage.getItem('plan-type')
+    les_addons = ['Online service', 'Larger storage', 'Customizable profile']
+    var i=0
     if (add_on_disp == 'Yearly') {
-        monthly_add_ons.forEach((month_add_on) => {
-            month_add_on.classList.add('hide');
-        })
-        yearly_add_ons.forEach((year_add_on) => {
-            year_add_on.classList.remove('hide')
+        all_add_ons.forEach((add) => {
+            add.innerHTML = `$${all_prices[les_addons[i]]*10}/yr`
+            i++
         })
     } else {
-        monthly_add_ons.forEach((month_add_on) => {
-            month_add_on.classList.remove('hide');
-        })
-        yearly_add_ons.forEach((year_add_on) => {
-            year_add_on.classList.add('hide')
+        all_add_ons.forEach((add) => {
+            add.innerHTML = `$${all_prices[les_addons[i]]}/mo`
+            i++
         })
     }
 }
@@ -384,6 +384,9 @@ for (let click of clicks_backward) {
                 navigs[i].classList.remove('active');
             }
         }
+
+        add_on_prices()
+       
     })  
 
 }
