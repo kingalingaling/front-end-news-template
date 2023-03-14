@@ -46,7 +46,7 @@ const back_to_step_2 = document.getElementById('back-to-step-2')
 const back_to_step_3 = document.getElementById('back-to-step-3')
 
 //Add-On Texts
-var all_add_ons = document.querySelectorAll('.all-add-ons')
+let all_add_ons = document.querySelectorAll('.all-add-ons')
 let add_on_disp = localStorage.getItem('plan-type')
 
 
@@ -59,17 +59,15 @@ const navigs = [nav_step_1, nav_step_2, nav_step_3, nav_step_4]; //4
 
 document.addEventListener('DOMContentLoaded', () => {
     onReload()
-    
 })
 
 function onReload () {
     let step_status = localStorage.getItem('current_step');
+    // console.log("I just reloaded")
     
-    if (step_status == undefined || 0) {
-        navigs[0].classList.add('active')
-        pages[0].classList.add('show')
+    if (step_status === null || 0 || undefined) {
         localStorage.setItem('current_step', 1);
-
+    
     } else if (step_status == 1){
         navigs[0].classList.add('active')
         pages[0].classList.add('show')
@@ -99,7 +97,7 @@ function onReload () {
         navigs[step_status - 2].classList.remove('active');
         pages[step_status - 2].classList.remove('show');
         pages[step_status - 1].classList.add('show');
-        localStorage.clear();
+        localStorage.setItem('current_step', 1);
 
     } else if (step_status >= 2) {
         // append the active class to the current step navigation
@@ -113,22 +111,22 @@ function onReload () {
     }
 }
 
+let info_store;
+
 // STEP 1 VALIDATION
 p_info_button.addEventListener('click', function () {
-    let info_store = validateInfo(fieldName=['name', 'email', 'phone'], errorName=['nameError', 'emailError', 'phoneError'], current=p_info, next=select_plan) 
-    
-    // if (info_store) {
-        
-    // } 
+    info_store = validateInfo(fieldName=['name', 'email', 'phone'], errorName=['nameError', 'emailError', 'phoneError'], current=p_info, next=select_plan) 
 
     // encapsulation, inheritance, polymophism, abstraction
 })
 
+if (info_store) {
+    console.log("the values are valid")
+} 
+
 function validateInfo(fieldName, errorName, current, next) {
     let valid = true
-    let information = {
-
-    }
+    let information = {}
     let errCount = 0
 
     for(let i = 0; i < fieldName.length; i++) {
@@ -144,7 +142,8 @@ function validateInfo(fieldName, errorName, current, next) {
             field.classList.remove('invalid')            
         }
     }
-    console.log(`No. of empty fields - ${errCount}`)
+    // console.log(`No. of empty fields - ${errCount}`)
+
     if (errCount < 1){
         current.classList.remove('show')
         next.classList.add('show')
@@ -217,7 +216,7 @@ function validatePlan(current, next) {
 function add_on_prices () {
     let add_on_disp = localStorage.getItem('plan-type')
     les_addons = ['Online service', 'Larger storage', 'Customizable profile']
-    var i=0
+    let i=0
     if (add_on_disp == 'Yearly') {
         all_add_ons.forEach((add) => {
             add.innerHTML = `$${all_prices[les_addons[i]]*10}/yr`
@@ -235,8 +234,8 @@ function add_on_prices () {
 const toggle = document.querySelector('#plan-duration')
 const monthly_text = document.getElementById('monthly-span')
 const yearly_text = document.getElementById('yearly-span')
-var monthly_plan = document.querySelectorAll('.monthly-plan')
-var yearly_plan = document.querySelectorAll('.yearly-plan')
+let monthly_plan = document.querySelectorAll('.monthly-plan')
+let yearly_plan = document.querySelectorAll('.yearly-plan')
 
 
 toggle.addEventListener('change', () => {
@@ -265,7 +264,6 @@ toggle.addEventListener('change', () => {
 // STEP 3 ADD-ONS
 //Toggle Add-ons price based on plan selected in step 2
 
-
 let add_on_options = [online_service, larger_storage, custom_profile]
 add_ons_button.addEventListener('click', () => {
     validateAddOns(current=add_ons, next=summary)
@@ -283,7 +281,7 @@ function validateAddOns(current, next) {
         }
     }
     
-    console.log(addOns_chosen)
+    // console.log(addOns_chosen)
 
     if (addOns_chosen.length > 0) {
         localStorage.setItem('add-ons-chosen', JSON.stringify(addOns_chosen));
@@ -306,12 +304,14 @@ function finish () {
     let plan = localStorage.getItem('selected_plan');
     plan_type = localStorage.getItem('plan-type');
     document.getElementById("summary-plan").innerHTML = `${plan} (${plan_type})`;
-    var x = '';
+    let x = '';
+
+    totalAmount = document.getElementById('total-price')
 
     if (localStorage.getItem('add-ons-chosen') != '') {
-        var chosen = JSON.parse(localStorage.getItem('add-ons-chosen'));
+        let chosen = JSON.parse(localStorage.getItem('add-ons-chosen'));
         if (plan_type == 'Yearly') {
-            var total_price = all_prices[plan]*10
+            let total_price = all_prices[plan]*10
             for(choice of chosen) {
                 x = x + `<div class="add-ons-chosen">
                 <p>${choice}</p>
@@ -322,9 +322,9 @@ function finish () {
             document.getElementById('plan-price').innerHTML = `$${all_prices[plan]*10}/yr`
             document.getElementById('chosen-add-ons').innerHTML = x
             document.getElementById('total-text').innerHTML = 'Total (per year)'
-            document.getElementById('total-price').innerHTML = `$${total_price}/yr`
+            totalAmount.innerHTML = `$${total_price}/yr`
         } else {
-            var total_price = all_prices[plan]
+            let total_price = all_prices[plan]
             for(choice of chosen) {
                 x = x + `<div class="add-ons-chosen">
                 <p>${choice}</p>
@@ -335,32 +335,32 @@ function finish () {
             document.getElementById('plan-price').innerHTML = `$${all_prices[plan]}/mo`
             document.getElementById('chosen-add-ons').innerHTML = x
             document.getElementById('total-text').innerHTML = 'Total (per month)'
-            document.getElementById('total-price').innerHTML = `$${total_price}/mo`
+            totalAmount.innerHTML = `$${total_price}/mo`;
         }
     } else {
         if (plan_type == 'Yearly') {
-            var total_price = all_prices[plan]*10
+            let total_price = all_prices[plan]*10
             document.getElementById('plan-price').innerHTML = `$${all_prices[plan]*10}/yr`
             document.getElementById('chosen-add-ons').innerHTML = x
             document.getElementById('total-text').innerHTML = 'Total (per year)'
             document.getElementById('total-price').innerHTML = `$${total_price}/yr`
+            localStorage.setItem('totalAmountYearly', total_price)
         } else {
-            var total_price = all_prices[plan]
+            let total_price = all_prices[plan]
             document.getElementById('plan-price').innerHTML = `$${all_prices[plan]}/mo`
             document.getElementById('chosen-add-ons').innerHTML = x
             document.getElementById('total-text').innerHTML = 'Total (per month)'
             document.getElementById('total-price').innerHTML = `$${total_price}/mo`
+            localStorage.setItem('totalAmountMonthly', total_price)
         }
     }
-    
-    
-
 }
 
 // GO TO STEP 5
-finalize.addEventListener('click', (current=summary,next=thanks) => {
+finalize.addEventListener('click', (current = summary, next = thanks) => {
     end(summary, thanks)
     localStorage.setItem('current_step', 5);
+    submitForm()
 })
 
 function end (current, next){
@@ -387,8 +387,29 @@ for (let click of clicks_backward) {
 
         add_on_prices()
        
-    })  
-
+    })
 }
 
 
+function submitForm() {
+    let planType = localStorage.getItem('plan-type');
+    const formData = {
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email'),
+        phone: localStorage.getItem('phone'),
+        plan: localStorage.getItem('selected_plan'),
+        addon: localStorage.getItem('add-ons-chosen'),
+        plan_type: planType,
+        totalFee: localStorage.getItem(`totalAmount${planType}`)
+    }
+
+    console.log(formData);
+}
+
+const request = new XMLHttpRequest();
+
+request.addEventListener('DOMContentLoaded', submitForm)
+request.open('POST', "https://www.multistepform.com/submitdata/");
+request.send();
+
+// console.log(request.responseText);
